@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balay Jardin - Your Garden Paradise</title>
+    <!-- Add Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color palette */
+            --color-primary: #BFA89B;    /* Warm beige for header and footer */
+            --color-secondary: #2E2F2F;  /* Dark gray */
+            --color-accent: #FFFFFF;     /* White */
+            --color-background: #F8F8F8; /* Light gray background */
+            --color-text-primary: #222222; /* Dark text */
+            --color-text-secondary: #555555; /* Medium gray text */
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            /* Font sizes */
+            --font-size-hero: 3rem;
+            --font-size-heading: 2rem;
+            --font-size-subheading: 1.5rem;
+            --font-size-body: 1rem;
+            --font-size-caption: 0.875rem;
+            
+            /* Line heights */
+            --line-height-heading: 1.2;
+            --line-height-body: 1.6;
+            
+            /* Spacing */
+            --spacing-section: 80px;
+            --spacing-element: 24px;
+            --spacing-button: 12px 24px;
+            
+            /* Grid */
+            --grid-max-width: 1400px;  /* Increased from 1200px for better spacing */
+            --grid-gutter: 40px;
+            --section-padding: 100px;
+            --container-padding: 5%;  /* Added for consistent side spacing */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Global styles */
+        body {
+            font-family: var(--font-body);
+            line-height: var(--line-height-body);
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            line-height: var(--line-height-heading);
+            color: var(--color-text-primary);
+        }
+
+        /* Button styles */
+        .book-now-btn {
+            display: inline-block;
+            padding: var(--spacing-button);
+            background: var(--color-primary);
+            color: var(--color-accent);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: var(--font-size-body);
+            font-family: var(--font-heading);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .book-now-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Form styles */
+        input, textarea, select {
+            font-family: var(--font-body);
+            padding: 0.5rem;
+            border: 1px solid var(--color-primary);
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        select {
+            background-color: white;
+            cursor: pointer;
+        }
+
+        select:focus {
+            border-color: var(--color-secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(222, 184, 135, 0.2);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            padding: var(--spacing-button);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            height: 80px;
+        }
+
+        header.scrolled {
+            background-color: var(--color-primary) !important;
+        }
+
+        .header-container {
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--spacing-element);
+        }
+
+        .brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .logo {
+            height: 55px;
+            width: auto;
+            transition: transform 0.2s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: white !important;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+            .logo {
+                height: 45px;
+                padding: 6px 10px;
+            }
+        }
+
+        /* Update navigation styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-element);
+        }
+
+        nav a {
+            font-family: var(--font-heading);
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: var(--font-size-caption);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-wood-light);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-wood-light);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 100px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: var(--grid-max-width);
+            padding: var(--spacing-element);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section - reduced sizes */
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-hero);
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-element);
+            font-weight: 600;
+            line-height: var(--line-height-heading);
+        }
+
+        .hero p {
+            font-family: var(--font-body);
+            font-size: var(--font-size-body);
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-element);
+            line-height: var(--line-height-body);
+        }
+
+        /* Header Book Now Button */
+        .header-book-now {
+            display: none;
+            padding: 8px 24px;
+            font-size: 14px;
+            background: white;
+            color: var(--color-primary);
+            border: none;
+            margin-left: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        header.scrolled .header-book-now {
+            display: inline-block;
+            opacity: 1;
+        }
+
+        /* Hero Section Updates */
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 80px; /* Add padding to account for bottom button */
+        }
+
+        .hero-content {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .hero-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 0;
+            z-index: 2;
+            background: transparent;
+        }
+
+        .hero-bottom .book-now-btn {
+            margin: 0 auto;
+            display: block;
+            max-width: 160px;
+            padding: 15px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header-book-now {
+                display: none !important;
+            }
+        }
+
+        /* Section Styles */
+        .section-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-split {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-split {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-split.image-right {
+                direction: rtl;
+            }
+            
+            .section-split.image-right > * {
+                direction: ltr;
+            }
+        }
+
+        .section-content {
+            padding: 2rem 0;
+        }
+
+        .section-content h2 {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Section Headers */
+        h2 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-heading);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-element);
+            font-weight: 600;
+            line-height: var(--line-height-heading);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--color-wood-light);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        h4 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        /* Package image styles */
+        .package-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Packages Section */
+        .packages {
+            background: var(--color-background);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .package-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .package-category {
+            margin-bottom: 3rem;
+        }
+
+        .package-category h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        /* Package Cards */
+        .package-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid var(--color-wood-light);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            font-family: var(--font-accent);
+        }
+
+        /* Update package card hover state */
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(44, 85, 48, 0.2);
+            border-color: var(--color-secondary);
+        }
+
+        .package-content {
+            padding: 1.5rem;
+        }
+
+        .package-content h4 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-wood-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .package-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .package-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .package-content li::before {
+            content: "•";
+            color: var(--color-secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        .price {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .note {
+            background: rgba(44, 85, 48, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        .inclusions {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem; /* Reduced from 4rem */
+            padding: 1rem 0; /* Reduced from 2rem */
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem; /* Reduced from 2rem */
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.3rem; /* Reduced from 1rem */
+        }
+
+        .contact-form label {
+            font-family: var(--font-body);
+            font-size: 0.9rem; /* Reduced from 1rem */
+            color: var(--color-text-primary);
+            margin-bottom: 0.2rem; /* Added to reduce space after label */
+        }
+
+        input, textarea {
+            font-family: var(--font-body);
+            padding: 0.5rem; /* Reduced from 1rem */
+            border: 1px solid var(--color-primary);
+            border-radius: 8px;
+            font-size: 0.9rem; /* Reduced from 1rem */
+            width: 100%;
+        }
+
+        textarea {
+            min-height: 80px; /* Reduced from 150px */
+            resize: vertical;
+        }
+
+        button, input[type="submit"] {
+            font-family: var(--font-body);
+            font-size: 1rem; /* Reduced from 1.1rem */
+            letter-spacing: 0.03em;
+            padding: 0.8rem; /* Reduced from 1rem */
+            background: var(--color-primary);
+            color: var(--color-accent);
+            border: 2px solid var(--color-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 0.5rem; /* Added to reduce space before button */
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background: var(--color-secondary);
+            color: var(--color-accent);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--color-secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(222, 184, 135, 0.2);
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-info a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--color-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-accent);
+            padding: var(--spacing-element);
+            text-align: center;
+        }
+
+        footer p {
+            font-family: var(--font-body);
+            font-size: var(--font-size-caption);
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            .hero-content {
+                margin: 0 1rem;
+                padding: 1.5rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Add styles for the contact banner */
+        .contact-banner {
+            background: var(--color-accent);
+            color: var(--color-text-primary);
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-banner a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+
+        .contact-banner a:hover {
+            text-decoration: underline;
+        }
+
+        /* Remove all booking panel related styles */
+        .booking-panel,
+        .booking-field,
+        .guest-selector,
+        .guest-popup,
+        .guest-type,
+        .guest-count,
+        .flatpickr-calendar {
+            display: none;
+        }
+
+        /* Package Styles */
+        .package-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .package-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .package-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .package-content {
+            padding: 2rem;
+        }
+
+        .package-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .package-content .description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .package-content .features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-content .features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .package-content .features li::before {
+            content: "•";
+            color: var(--color-primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .package-content .price {
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .package-content .book-now-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+
+        /* Add container class */
+        .container {
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+            width: 100%;
+        }
+
+        /* Update header container */
+        .header-container {
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+            width: 100%;
+        }
+
+        /* Update gallery styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: var(--spacing-element) var(--container-padding);
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Update section styles */
+        section {
+            padding: var(--spacing-section) 0;
+        }
+
+        .section-content {
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+        }
+
+        /* Grid layouts */
+        .about-grid, .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .features-grid {
+            direction: rtl;
+        }
+
+        .features-text {
+            direction: ltr;
+        }
+
+        .about-image, .features-image {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .about-image img, .features-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem; /* Reduced from 1.5rem */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem; /* Reduced from 0.6rem */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem; /* Reduced from 1.5rem */
+            font-size: 0.9rem;
+        }
+
+        .info-item i {
+            color: var(--color-primary);
+            margin-right: 1rem;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+        }
+
+        .info-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-item a:hover {
+            color: var(--color-secondary);
+            text-decoration: underline;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem; /* Reduced from 1.5rem */
+        }
+
+        .contact-form .book-now-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .about-grid,
+            .features-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .features-grid {
+                direction: ltr;
+            }
+
+            .about-image,
+            .features-image {
+                min-height: 300px;
+            }
+
+            .section-content {
+                padding-left: var(--container-padding);
+                padding-right: var(--container-padding);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem; /* Reduced from 3rem */
+            }
+
+            .form-group {
+                margin-bottom: 0.8rem;
+            }
+
+            .info-item {
+                margin-bottom: 0.8rem; /* Reduced from 1.2rem */
+            }
+        }
+        /* Package styles */
+        .packages-section {
+            background-color: var(--color-background);
+        }
+
+        .package-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+            align-items: center;
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .package-container:last-child {
+            padding-bottom: 0;
+        }
+
+        .package-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+            height: auto;
+            min-height: unset;
+        }
+
+        .package-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .package-image:hover {
+            transform: scale(1.05);
+        }
+
+        .package-content {
+            padding: 0;
+        }
+
+        .package-content h3 {
+            font-size: var(--font-size-subheading);
+            margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
+        }
+
+        .package-content .description {
+            margin-bottom: 2rem;
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-body);
+        }
+
+        .package-content .features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .package-content .features li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--color-text-secondary);
+        }
+
+        .package-content .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        .package-content .price {
+            font-size: var(--font-size-subheading);
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: 2rem 0;
+        }
+
+        /* Responsive adjustments for packages */
+        @media (max-width: 768px) {
+            .package-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 4rem;
+                padding-bottom: 2rem;
+            }
+
+            .package-image-container {
+                aspect-ratio: 16/9;
+            }
+
+            .package-content {
+                padding: 0;
+            }
+
+            .package-content .price {
+                margin: 1.5rem 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="brand-name">Balay Jardin</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#accommodation">ACCOMMODATION</a></li>
+                    <li><a href="#dining">DINING</a></li>
+                    <li><a href="#offers">OFFERS</a></li>
+                    <li><a href="#gallery">GALLERY</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="book-now-btn header-book-now">Book Now</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Balay Jardin</h1>
+            <p>Your special and memorable moments can happen here</p>
+        </div>
+        <div class="hero-bottom">
+            <a href="#contact" class="book-now-btn">Book Now</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="about-section">
+            <div class="section-content">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2>About Us</h2>
+                        <p>Discover tranquility at Balay Jardin, where nature meets comfort. Our private garden paradise offers a peaceful retreat from the bustling city life.</p>
+                        <p>Experience the perfect blend of comfort and natural beauty in our thoughtfully designed spaces. Whether you're planning a special event, a family gathering, or simply seeking a peaceful getaway, Balay Jardin provides the ideal setting.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/main1.jpeg" alt="Balay Jardin Garden View" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="section-content">
+                <div class="features-grid">
+                    <div class="features-text">
+                        <h2>Our Features</h2>
+                        <p>Immerse yourself in our carefully curated amenities designed for your comfort and enjoyment:</p>
+                        <ul class="features-list">
+                            <li>Spacious garden venue for events</li>
+                            <li>Private function rooms</li>
+                            <li>Modern amenities</li>
+                            <li>Ample parking space</li>
+                            <li>Professional event coordination</li>
+                            <li>Customizable packages</li>
+                        </ul>
+                    </div>
+                    <div class="features-image">
+                        <img src="images/main2.jpeg" alt="Balay Jardin Features" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="section-content">
+                <h2>Gallery</h2>
+                <div class="gallery-grid">
+                    <!-- Front Area -->
+                    <div class="gallery-item">
+                        <img src="images/front1.jpeg" alt="Front view of Balay Jardin" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/front2.jpeg" alt="Garden entrance of Balay Jardin" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/front3.jpeg" alt="Front garden area" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/front4.jpeg" alt="Front landscape view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/front5.jpeg" alt="Front garden pathway" loading="lazy">
+                    </div>
+                    
+                    <!-- Second Floor Area -->
+                    <div class="gallery-item">
+                        <img src="images/2nd1.jpeg" alt="Second floor view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd2.jpeg" alt="Second floor interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd3.jpeg" alt="Second floor space" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd4.jpeg" alt="Second floor area" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd5.jpeg" alt="Second floor view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd6.jpeg" alt="Second floor space" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd7.jpeg" alt="Second floor interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/2nd8.jpeg" alt="Second floor view" loading="lazy">
+                    </div>
+                    
+                    <!-- Hall Area -->
+                    <div class="gallery-item">
+                        <img src="images/hall1.jpeg" alt="Main hall interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/hall2.jpeg" alt="Hall seating area" loading="lazy">
+                    </div>
+                    
+                    <!-- Main Areas -->
+                    <div class="gallery-item">
+                        <img src="images/main1.jpeg" alt="Main living space" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/main2.jpeg" alt="Main dining area" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/main3.jpeg" alt="Main lounge area" loading="lazy">
+                    </div>
+                    
+                    <!-- Cottage Views -->
+                    <div class="gallery-item">
+                        <img src="images/cottage1.jpeg" alt="Cottage exterior view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/cottage2.jpeg" alt="Cottage interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/cottage3.jpeg" alt="Cottage space" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/cottage4.jpeg" alt="Cottage view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/cottage5.jpeg" alt="Cottage interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/cottage6.jpeg" alt="Cottage space" loading="lazy">
+                    </div>
+                    
+                    <!-- Event Areas -->
+                    <div class="gallery-item">
+                        <img src="images/event1.jpg" alt="Event space setup" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event2.jpg" alt="Event area" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event3.jpg" alt="Event setup" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event5.jpg" alt="Event space" loading="lazy">
+                    </div>
+                    
+                    <!-- Pool Area -->
+                    <div class="gallery-item">
+                        <img src="images/pool1.jpg" alt="Swimming pool view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/pool2.jpg" alt="Pool area" loading="lazy">
+                    </div>
+                    
+                    <!-- Room Views -->
+                    <div class="gallery-item">
+                        <img src="images/room1.jpg" alt="Room interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/room2.jpg" alt="Room view" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/room3.jpg" alt="Room space" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="packages" class="packages-section">
+            <div class="section-content">
+                <h2>Our Packages</h2>
+                
+                <!-- Day Tour Package -->
+                <div class="package-container">
+                    <div class="package-content">
+                        <h3>Day Tour Package</h3>
+                        <p class="description">Perfect for a relaxing day out with family and friends. Enjoy our beautiful garden and amenities.</p>
+                        <ul class="features">
+                            <li>8-hour access to the venue</li>
+                            <li>Use of swimming pool</li>
+                            <li>Access to garden areas</li>
+                            <li>Outdoor dining space</li>
+                            <li>Basic cleaning service</li>
+                        </ul>
+                        <p class="price">₱4,500</p>
+                        <a href="#contact" class="book-now-btn">Book Now</a>
+                    </div>
+                    <div class="package-image-container">
+                        <img src="images/2nd1.jpeg" alt="Day Tour Package" loading="lazy" class="package-image">
+                    </div>
+                </div>
+
+                <!-- Overnight Stay Package -->
+                <div class="package-container">
+                    <div class="package-image-container">
+                        <img src="images/cottage1.jpeg" alt="Overnight Stay Package" loading="lazy" class="package-image">
+                    </div>
+                    <div class="package-content">
+                        <h3>Overnight Stay Package</h3>
+                        <p class="description">Experience a full day and night of comfort and relaxation in our cozy accommodations.</p>
+                        <ul class="features">
+                            <li>24-hour access to the venue</li>
+                            <li>Comfortable sleeping quarters</li>
+                            <li>Use of swimming pool</li>
+                            <li>Complete kitchen facilities</li>
+                            <li>Garden access and outdoor spaces</li>
+                            <li>Cleaning service included</li>
+                        </ul>
+                        <p class="price">₱8,000</p>
+                        <a href="#contact" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Special Events Package -->
+                <div class="package-container">
+                    <div class="package-content">
+                        <h3>Special Events Package</h3>
+                        <p class="description">Make your special occasions truly memorable in our beautiful garden venue.</p>
+                        <ul class="features">
+                            <li>12-hour exclusive venue access</li>
+                            <li>Event coordination assistance</li>
+                            <li>Setup and cleanup service</li>
+                            <li>Use of all facilities</li>
+                            <li>Dedicated event staff</li>
+                            <li>Customizable arrangements</li>
+                        </ul>
+                        <p class="price">Starting at ₱15,000</p>
+                        <a href="#contact" class="book-now-btn">Book Now</a>
+                    </div>
+                    <div class="package-image-container">
+                        <img src="images/main2.jpeg" alt="Special Events Package" loading="lazy" class="package-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="section-content">
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <h2>Book & Contact</h2>
+                        <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="package">Package Interest</label>
+                                <select id="package" name="package" required>
+                                    <option value="">Select a package</option>
+                                    <option value="Day Tour Package">Day Tour Package</option>
+                                    <option value="Overnight Stay Package">Overnight Stay Package</option>
+                                    <option value="Special Events Package">Special Events Package</option>
+                                    <option value="Others">Others (Please specify in message)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="3" placeholder="Please share your message here. If you selected 'Others' above, kindly specify what you'd like to inquire about." required></textarea>
+                            </div>
+                            <button type="submit" class="book-now-btn">Send Message</button>
+                        </form>
+                    </div>
+
+                    <script>
+                        function handleFormSubmit(event) {
+                            event.preventDefault();
+                            
+                            // Get form values
+                            const name = document.getElementById('name').value;
+                            const email = document.getElementById('email').value;
+                            const phone = document.getElementById('phone').value;
+                            const package = document.getElementById('package').value;
+                            const message = document.getElementById('message').value;
+
+                            // Create email body
+                            const emailBody = `
+Hello Balay Jardin,
+
+I would like to inquire about booking:
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Package Interest: ${package}
+
+Additional Message:
+${message}
+
+Thank you!
+                            `.trim();
+
+                            // Create mailto link
+                            const mailtoLink = `mailto:balayjardin.73mmw@passmail.net?subject=Booking Inquiry from ${name}&body=${encodeURIComponent(emailBody)}`;
+
+                            // Open email client
+                            window.location.href = mailtoLink;
+
+                            // Reset form
+                            document.getElementById('contactForm').reset();
+
+                            return false;
+                        }
+                    </script>
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Location: <a href="https://maps.google.com/?q=Balay+Jardin+Murcia+Negros+Occidental,+Purok+Boungainvillea+Pandanon+Silos,+Murcia,+Philippines" target="_blank" rel="noopener noreferrer">Purok Boungainvillea Pandanon Silos, Murcia, Philippines</a></p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p>Phone: 
+                                <a href="tel:09207206963">09207206963</a> / 
+                                <a href="tel:09105440920">09105440920</a> / 
+                                <a href="tel:09097182494">09097182494</a>
+                            </p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-facebook"></i>
+                            <p>Facebook: <a href="https://www.facebook.com/BalayJardinMurcia" target="_blank">@BalayJardinMurcia</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Balay Jardin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="">
+    </div>
+
+    <script>
+        // Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const nav = document.querySelector('nav');
+        const header = document.querySelector('header');
+        
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Update header scroll behavior
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(bookingForm);
+            const data = Object.fromEntries(formData);
+            
+            // Here we'll open the messenger chat with the form data
+            const message = `Hi! I'm interested in booking:\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nMessage: ${data.message}`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://m.me/BalayJardinMurcia?text=${encodedMessage}`, '_blank');
+        });
+
+        // Gallery lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const imgAlt = item.querySelector('img').alt;
+                lightboxImg.src = imgSrc;
+                lightboxImg.alt = imgAlt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Close lightbox with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 
